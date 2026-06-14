@@ -167,6 +167,24 @@ try {
 You may also import any Turnkey-protocol stamper (e.g. `@turnkey/api-key-stamper`) —
 Kryard speaks the Turnkey protocol — or inject your own `Stamper`.
 
+### Against a local signer (open-source, no account)
+
+The open-source signer ([`Kryard/signer`](https://github.com/Kryard/signer)) runs the
+same API locally. In dev mode (`DEV_ADMIN_ENABLED=true`) it exposes an unauthenticated
+bootstrap that mints a throwaway org + API key, so you don't need a managed account.
+`bootstrapLocalClient` does that and hands back a ready client:
+
+```ts
+import { bootstrapLocalClient } from "@kryard/sdk";
+
+const { client } = await bootstrapLocalClient(); // defaults to http://localhost:8787
+const { addresses } = await client.createPrivateKey({ name: "local-evm", curve: "CURVE_SECP256K1" });
+```
+
+**Dev-only** — it targets `/admin/dev/*`, which the API exposes only in dev mode; never
+point it at a public deployment. Creating keys and queries work out of the box; to also
+*sign* locally, run the API with `POLICY_BYPASS_ALLOWED=true` (or seed a policy).
+
 ## Key export
 
 Export pulls a key out as an **HPKE-sealed bundle** (RFC 9180, suite

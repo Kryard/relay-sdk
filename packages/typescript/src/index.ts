@@ -61,3 +61,9 @@ export {
   type ExportBundle,
   type RecipientKeyPair,
 } from "./export.js";
+// --- Local dev bootstrap (open-source signer; DEV ONLY) -------------------
+export {
+  bootstrapLocalClient,
+  type BootstrapLocalClientOptions,
+  type BootstrapLocalClientResult,
+} from "./devBootstrap.js";

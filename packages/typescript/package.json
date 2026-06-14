@@ -1,6 +1,6 @@
 {
   "name": "@kryard/sdk",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Client for Kryard's Turnkey-compatible wallet infrastructure: X-Stamp'd key creation, secp256k1 signing (raw payload + EVM transaction), HPKE private-key export, and the managed EIP-7702 relay (sponsored execute with optional ERC-20 gas).",
   "type": "module",
   "main": "dist/index.js",
